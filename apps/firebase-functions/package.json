@@ -1,0 +1,35 @@
+{
+  "name": "@myapp/firebase-functions",
+  "version": "0.1.0",
+  "main": "dist",
+  "license": "UNLICENSED",
+  "scripts": {
+    "clean": "rm -rf ./tmp ./dist ./build *.lock",
+    "_build": "tsc",
+    "build": "run-s _build generate-entrypoint",
+    "build:optimize": "rimraf ./tmp ./dist ./build && tsc -p ./tsconfig.build.json && yarn workspace @myapp/tools cli generate-entrypoint apps firebase-functions tmp && rollup -c ./rollup.config.js && rimraf ./tmp",
+    "build:preDeploy": "run-s prepare-deploy",
+    "start": "cross-env USE_FIREBASE_EMULATOR=true FIREBASE_EMULATOR_FUNCTION_CONFIG_DIR=$(pwd)/configs firebase emulators:start --project demo-firebase-emulator-app -c ../../firebase.json --inspect-functions --only functions",
+    "dev": "yarn generate-entrypoint && concurrently -c bgBlue,bgWhite yarn:*-watch",
+    "prepare-deploy": "yarn workspace @myapp/tools cli prepare-deploy apps firebase-functions",
+    "generate-entrypoint": "yarn workspace @myapp/tools cli generate-entrypoint apps firebase-functions",
+    "build-watch": "tsc -w",
+    "start-watch": "yarn start",
+    "_use:firebase": "echo firebase use default",
+    "_update:env:function": "yarn workspace @myapp/tools firebaseFunctionPrepEnv",
+    "_set:env:function": "echo firebase functions:config:set env=\"$(cat ./configs/.env.deploy.json)\"",
+    "_deploy:function": "echo firebase deploy --only functions",
+    "_deploy:function:batched": "yarn workspace @myapp/tools firebaseFunctionBatchDeploy",
+    "deploy:preDeploy": "yarn workspace @myapp/tools firebaseFunctionPreDeploy",
+    "deploy": "run-s _use:firebase _update:env:function _set:env:function _deploy:function",
+    "deploy:batched": "run-s _use:firebase _update:env:function _set:env:function _deploy:function:batched",
+    "deploy:postDeploy": "yarn workspace @myapp/tools firebaseFunctionPostDeploy"
+  },
+  "dependencies": {
+    "@myapp/config": "*",
+    "@myapp/greetings": "*",
+    "firebase-admin": "^11.0.0",
+    "firebase-functions": "^3.22.0"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,27 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "cSpell.words": ["firestore", "hashicorp", "myapp", "tfvars", "Tsvg"],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "search.exclude": {
+    "**/build/*": true,
+    "**/dist/*": true,
+    "**/tmp/*": true,
+    "**/coverage/*": true,
+    "**/node_modules/*": true
+  }
+}

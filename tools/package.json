@@ -1,0 +1,21 @@
+{
+  "name": "@myapp/tools",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "echo noop",
+    "build:optimize": "echo noop",
+    "build:preDeploy": "echo noop",
+    "cli": "ts-node ./cli.ts",
+    "firebaseFunctionPrepEnv": "ts-node ./firebaseFunctionPrepEnv.ts",
+    "firebaseFunctionPreDeploy": "ts-node ./firebaseFunctionPreDeploy.ts",
+    "firebaseFunctionBatchDeploy": "ts-node ./firebaseFunctionBatchDeploy.ts",
+    "firebaseFunctionPostDeploy": "ts-node ./firebaseFunctionPostDeploy.ts"
+  },
+  "dependencies": {
+    "ts-node": "^10.8.2"
+  },
+  "devDependencies": {}
+}

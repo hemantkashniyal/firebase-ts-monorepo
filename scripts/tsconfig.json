@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.build.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "dist",
+    "paths": {
+      "@myapp/config": ["packages/config"],
+      "@myapp/greetings": ["packages/greetings"]
+    }
+  }
+}

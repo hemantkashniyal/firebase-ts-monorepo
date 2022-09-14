@@ -1,0 +1,28 @@
+{
+  "name": "@myapp/gcf-hello-world",
+  "version": "0.1.0",
+  "main": "dist",
+  "license": "UNLICENSED",
+  "scripts": {
+    "clean": "rm -rf ./dist ./build *.lock",
+    "_build": "tsc",
+    "build": "run-s _build generate-entrypoint",
+    "build:optimize": "rimraf ./tmp ./dist ./build && tsc -p ./tsconfig.build.json && yarn workspace @myapp/tools cli generate-entrypoint apps/gcf-functions hello-world tmp && rollup -c ./rollup.config.js && rimraf ./tmp",
+    "build:preDeploy": "run-s prepare-deploy",
+    "start": "functions-framework --target=helloWorld --source=dist --signature-type=http",
+    "dev": "yarn generate-entrypoint && concurrently -c bgBlue,bgWhite yarn:*-watch",
+    "prepare-deploy": "yarn workspace @myapp/tools cli prepare-deploy apps/gcf-functions hello-world",
+    "generate-entrypoint": "yarn workspace @myapp/tools cli generate-entrypoint apps/gcf-functions hello-world",
+    "build-watch": "tsc -w",
+    "start-watch": "nodemon --watch ./dist --exec yarn start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^2.1.0",
+    "escape-html": "^1.0.3"
+  },
+  "devDependencies": {
+    "@types/escape-html": "^1.0.1",
+    "@types/express": "^4.17.13"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules
+yarn-error.log
+dist
+
+summary/*/*.html
+summary/*/*.json
+summary/*/*.xml
+
+
+src/postman/

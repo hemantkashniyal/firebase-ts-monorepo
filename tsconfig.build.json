@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "declaration": false,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "paths": {
+      "@myapp/config": ["packages/config/src/index.ts"],
+      "@myapp/config/*": ["packages/config/src/*"],
+      "@myapp/greetings": ["packages/greetings/src/index.ts"],
+      "@myapp/greetings/*": ["packages/greetings/src/*"]
+    }
+  },
+  "exclude": ["**/*.test.ts", "node_modules", "dist"]
+}

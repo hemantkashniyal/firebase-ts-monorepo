@@ -1,0 +1,12 @@
+{
+  "name": "@myapp/config",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "license": "UNLICENSED",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "echo noop",
+    "build:optimize": "echo noop",
+    "build:preDeploy": "echo noop"
+  }
+}

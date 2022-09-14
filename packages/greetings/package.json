@@ -1,0 +1,16 @@
+{
+  "name": "@myapp/greetings",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "license": "UNLICENSED",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "echo noop",
+    "build:optimize": "echo noop",
+    "build:preDeploy": "echo noop"
+  },
+  "dependencies": {
+    "@myapp/config": "*",
+    "cowsay": "^1.5.0"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@myapp/gcf-funny-world",
+  "version": "0.1.0",
+  "main": "dist",
+  "license": "UNLICENSED",
+  "scripts": {
+    "clean": "rm -rf ./dist ./build *.lock",
+    "_build": "tsc",
+    "build": "run-s _build generate-entrypoint",
+    "build:optimize": "rimraf ./tmp ./dist ./build && tsc -p ./tsconfig.build.json && yarn workspace @myapp/tools cli generate-entrypoint apps/gcf-functions funny-world tmp && rollup -c ./rollup.config.js && rimraf ./tmp",
+    "build:preDeploy": "run-s prepare-deploy",
+    "start": "functions-framework --target=funnyWorld --source=dist --signature-type=http",
+    "dev": "yarn generate-entrypoint && concurrently -c bgBlue,bgWhite yarn:*-watch",
+    "prepare-deploy": "yarn workspace @myapp/tools cli prepare-deploy apps/gcf-functions funny-world",
+    "generate-entrypoint": "yarn workspace @myapp/tools cli generate-entrypoint apps/gcf-functions funny-world",
+    "build-watch": "tsc -w",
+    "start-watch": "nodemon --watch ./dist --exec yarn start"
+  },
+  "dependencies": {
+    "escape-html": "^1.0.3",
+    "@myapp/greetings": "*"
+  }
+}
