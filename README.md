@@ -35,3 +35,7 @@ yarn cli prepare-deploy funny-world
 ```
 
 > Remember to remove the changes after deployment!
+
+# Credits
+
+Inspired from https://github.com/productbrew/gcf-monorepo
